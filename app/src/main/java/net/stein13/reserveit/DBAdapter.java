@@ -1,5 +1,7 @@
 package net.stein13.reserveit;
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -8,6 +10,8 @@ import android.util.Log;
  * Created by gregory on 10/23/14.
  */
 public class DBAdapter extends SQLiteOpenHelper {
+    public SQLiteDatabase db;
+    private SQLiteOpenHelper DBHelper;
 
     public static final String TABLE_RESERVATIONS = "reservations";
     public static final String COLUMN_ID = "_id";
@@ -43,7 +47,29 @@ public class DBAdapter extends SQLiteOpenHelper {
     }
 
 
+    public DBAdapter open() throws SQLException
+    {
+        db = DBHelper.getWritableDatabase();
+        return this;
+    }
+    public void close()
+    {
+        DBHelper.close();
+    }
+    public long insertReservation(String lastNameValue, String firstNameValue, String arrivalValue, String  departureValue, String roomValue, String emailValue, String phoneValue, String addressValue)
+    {
+        ContentValues initialValues = new ContentValues();
+        initialValues.put(COLUMN_LNAME, lastNameValue);
+        initialValues.put(COLUMN_FNAME, firstNameValue);
+        initialValues.put(COLUMN_DATE, arrivalValue);
+        initialValues.put(COLUMN_DEPARTURE, departureValue);
+        initialValues.put(COLUMN_ROOMS, roomValue);
+        initialValues.put(COLUMN_EMAIL, emailValue);
+        initialValues.put(COLUMN_PHONE, phoneValue);
+        initialValues.put(COLUMN_STADDRESS, addressValue);
 
+        return db.insert(TABLE_RESERVATIONS, null, initialValues);
+    }
 
 
     @Override

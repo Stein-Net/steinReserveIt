@@ -2,6 +2,7 @@ package net.stein13.reserveit;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Outline;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,6 +17,7 @@ public class StartActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+
     }
 
 
