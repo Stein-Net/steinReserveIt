@@ -32,7 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
-                android:text="Name"
+                android:hint="Name"
                 android:ems="10"
                 android:id="@+id/lastName"
                 android:layout_column="1" />
@@ -54,7 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
-                android:text="Name"
+                android:hint="Name"
                 android:ems="10"
                 android:id="@+id/firstName"
                 android:layout_column="1" />
@@ -76,7 +76,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="date"
-                android:text="Arrival Date"
+                android:hint="Arrival Date"
                 android:ems="10"
                 android:id="@+id/arrivalDate"
                 android:layout_column="1" />
@@ -100,7 +100,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="date"
-                android:text="Departure Date"
+                android:hint="Departure Date"
                 android:ems="10"
                 android:id="@+id/departureDate" />
         </TableRow>
@@ -159,7 +159,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
                 android:ems="10"
-                android:text="E-Mail Address"
+                android:hint="E-Mail Address"
                 android:id="@+id/emailAddress"
                 android:layout_column="1" />
         </TableRow>
@@ -180,7 +180,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="phone"
-                android:text="Phone Number"
+                android:hint="Phone Number"
                 android:ems="10"
                 android:id="@+id/phoneNumber"
                 android:layout_column="1" />
@@ -203,7 +203,7 @@
                 android:inputType="textPostalAddress"
                 android:ems="10"
                 android:id="@+id/streetAddress"
-                android:text="Street Address"/>
+                android:hint="Street Address"/>
         </TableRow>
 
     </TableLayout>
