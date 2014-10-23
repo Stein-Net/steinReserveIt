@@ -21,7 +21,7 @@
         android:layout_gravity="bottom|right"
         android:background="@drawable/ripple"
         android:stateListAnimator="@drawable/anim"
-        android:src="@drawable/ic_action_add"
+        android:src="@drawable/ic_newreservation"
         android:elevation="4dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true" />
