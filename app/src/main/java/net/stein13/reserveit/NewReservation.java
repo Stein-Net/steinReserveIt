@@ -1,28 +1,24 @@
 package net.stein13.reserveit;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-
-import net.stein13.reserveit.DBAdapter;
 
 
-public class StartActivity extends Activity {
+public class NewReservation extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start);
+        setContentView(R.layout.activity_new_reservation);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.start, menu);
+        getMenuInflater().inflate(R.menu.new_reservation, menu);
         return true;
     }
 
@@ -36,10 +32,5 @@ public class StartActivity extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    public void makeNewReservation(View view) {
-        Intent intent = new Intent(this, NewReservation.class);
-        startActivity(intent);
     }
 }

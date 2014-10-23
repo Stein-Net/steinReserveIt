@@ -12,9 +12,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/listView"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
-    <ImageButton
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+
+
+
+
+  <ImageButton
         android:id="@+id/fab_add"
         android:layout_width="@dimen/fab_size"
         android:layout_height="@dimen/fab_size"
@@ -23,18 +28,8 @@
         android:stateListAnimator="@drawable/anim"
         android:src="@android:drawable/ic_menu_add"
         android:elevation="4dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
-    <ImageButton
-        android:id="@+id/fab_menu"
-        android:layout_width="@dimen/fab_size"
-        android:layout_height="@dimen/fab_size"
-        android:layout_gravity="bottom|right"
-        android:background="@drawable/ripple"
-        android:stateListAnimator="@drawable/anim"
-        android:src="@android:drawable/ic_menu_info_details"
-        android:elevation="4dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/fab_add" />
+        android:layout_alignEnd="@+id/listView"
+        android:onClick="makeNewReservation"/>
 
 </RelativeLayout>
