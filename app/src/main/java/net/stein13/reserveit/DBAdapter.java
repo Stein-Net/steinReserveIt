@@ -1,17 +1,19 @@
 package net.stein13.reserveit;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.view.MenuItem;
 
 /**
  * Created by gregory on 10/23/14.
  */
 public class DBAdapter extends SQLiteOpenHelper {
     public SQLiteDatabase db;
-    private SQLiteOpenHelper DBHelper;
+    protected SQLiteOpenHelper DBHelper;
 
     public static final String TABLE_RESERVATIONS = "reservations";
     public static final String COLUMN_ID = "_id";
@@ -24,23 +26,24 @@ public class DBAdapter extends SQLiteOpenHelper {
     public static final String COLUMN_NOTES = "notes";
     public static final String COLUMN_EMAIL = "email";
     public static final String COLUMN_PHONE = "phone";
-    public static final String COLUMN_STADDRESS = "address";
+    public static final String COLUMN_STADDRESS = "staddress";
+   // public static final String[] ALL_COLUMNS = new String[] (COLUMN_LNAME, COLUMN_FNAME, COLUMN_DATE, COLUMN_ROOMS, COLUMN_DEPARTURE, COLUMN_XRATE, COLUMN_NOTES, COLUMN_EMAIL, COLUMN_PHONE, COLUMN_STADDRESS);
 
-    private static final String DATABASE_NAME = "reservations.db";
-    private static final int DATABASE_VERSION = 1;
+    protected static final String DATABASE_NAME = "reservations.db";
+    protected static final int DATABASE_VERSION = 2;
 
-    private static final String DATABASE_CREATE = "create table "
+    protected static final String DATABASE_CREATE = "create table "
             + TABLE_RESERVATIONS + "(" + COLUMN_ID + " integer primary key autoincrement, "
-            + COLUMN_LNAME  + " text not null);"
-            + COLUMN_FNAME  + " text not null);"
-            + COLUMN_DATE   + " text not null);"
-            + COLUMN_ROOMS  + " text not null);"
-            + COLUMN_DEPARTURE  + " text not null);"
-            + COLUMN_XRATE  + " text not null);"
-            + COLUMN_NOTES  + " text not null);"
-            + COLUMN_EMAIL  + " text not null);"
-            + COLUMN_PHONE  + " text not null);"
-            + COLUMN_STADDRESS  + " text not null);";
+            + COLUMN_LNAME       + " text not null);"
+            + COLUMN_FNAME       + " text not null);"
+            + COLUMN_DATE        + " text not null);"
+            + COLUMN_ROOMS       + " text not null);"
+            + COLUMN_DEPARTURE   + " text not null);"
+            + COLUMN_XRATE       + " text not null);"
+            + COLUMN_NOTES       + " text not null);"
+            + COLUMN_EMAIL       + " text not null);"
+            + COLUMN_PHONE       + " text not null);"
+            + COLUMN_STADDRESS   + " text not null);";
 
     public DBAdapter(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -49,14 +52,21 @@ public class DBAdapter extends SQLiteOpenHelper {
 
     public DBAdapter open() throws SQLException
     {
-        db = DBHelper.getWritableDatabase();
+        
+        db = getWritableDatabase();
         return this;
     }
-    public void close()
-    {
-        DBHelper.close();
-    }
-    public long insertReservation(String lastNameValue, String firstNameValue, String arrivalValue, String  departureValue, String roomValue, String emailValue, String phoneValue, String addressValue)
+   // public Cursor getAllRows() {
+   //     String where = null;
+   //     Cursor c = db.query(true, DATABASE_NAME, ALL_COLUMNS, where, null, null, null, null, null);
+   //     if (c != null)
+   //     {
+   //         c.moveToFirst();
+   //     }
+   //     return c;
+   // }
+
+    public long insertReservation(String lastNameValue, String firstNameValue, String arrivalValue, String  departureValue, String roomValue, String emailValue, String phoneValue, String staddressValue)
     {
         ContentValues initialValues = new ContentValues();
         initialValues.put(COLUMN_LNAME, lastNameValue);
@@ -66,7 +76,7 @@ public class DBAdapter extends SQLiteOpenHelper {
         initialValues.put(COLUMN_ROOMS, roomValue);
         initialValues.put(COLUMN_EMAIL, emailValue);
         initialValues.put(COLUMN_PHONE, phoneValue);
-        initialValues.put(COLUMN_STADDRESS, addressValue);
+        initialValues.put(COLUMN_STADDRESS, staddressValue);
 
         return db.insert(TABLE_RESERVATIONS, null, initialValues);
     }
@@ -85,4 +95,6 @@ public class DBAdapter extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_RESERVATIONS);
         onCreate(db);
     }
+
+
 }
