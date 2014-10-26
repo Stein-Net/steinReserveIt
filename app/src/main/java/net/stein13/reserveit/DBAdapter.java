@@ -27,23 +27,22 @@ public class DBAdapter extends SQLiteOpenHelper {
     public static final String COLUMN_EMAIL = "email";
     public static final String COLUMN_PHONE = "phone";
     public static final String COLUMN_STADDRESS = "staddress";
-   // public static final String[] ALL_COLUMNS = new String[] (COLUMN_LNAME, COLUMN_FNAME, COLUMN_DATE, COLUMN_ROOMS, COLUMN_DEPARTURE, COLUMN_XRATE, COLUMN_NOTES, COLUMN_EMAIL, COLUMN_PHONE, COLUMN_STADDRESS);
 
     protected static final String DATABASE_NAME = "reservations.db";
     protected static final int DATABASE_VERSION = 2;
 
     protected static final String DATABASE_CREATE = "create table "
             + TABLE_RESERVATIONS + "(" + COLUMN_ID + " integer primary key autoincrement, "
-            + COLUMN_LNAME       + " text not null);"
-            + COLUMN_FNAME       + " text not null);"
-            + COLUMN_DATE        + " text not null);"
-            + COLUMN_ROOMS       + " text not null);"
-            + COLUMN_DEPARTURE   + " text not null);"
-            + COLUMN_XRATE       + " text not null);"
-            + COLUMN_NOTES       + " text not null);"
-            + COLUMN_EMAIL       + " text not null);"
-            + COLUMN_PHONE       + " text not null);"
-            + COLUMN_STADDRESS   + " text not null);";
+            + COLUMN_LNAME       + " text not null, "
+            + COLUMN_FNAME       + " text, "
+            + COLUMN_DATE        + " text not null, "
+            + COLUMN_ROOMS       + " text not null, "
+            + COLUMN_DEPARTURE   + " text, "
+            + COLUMN_XRATE       + " text, "
+            + COLUMN_NOTES       + " text, "
+            + COLUMN_EMAIL       + " text, "
+            + COLUMN_PHONE       + " text not null, "
+            + COLUMN_STADDRESS   + " text);";
 
     public DBAdapter(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
