@@ -1,6 +1,7 @@
 package net.stein13.reserveit;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -48,6 +49,9 @@ public class NewReservation extends Activity {
         Toast toast = Toast.makeText(getApplicationContext(), "Creating Reservation", Toast.LENGTH_LONG);
         toast.show();
         db.close();
+        Intent intent = new Intent(this, StartActivity.class);
+        startActivity(intent);
+        finish();
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

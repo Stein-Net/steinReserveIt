@@ -15,6 +15,8 @@ public class DBAdapter extends SQLiteOpenHelper {
     public SQLiteDatabase db;
     protected SQLiteOpenHelper DBHelper;
 
+    //TODO Create a second table to store ROOM_TYPE and room rates
+
     public static final String TABLE_RESERVATIONS = "reservations";
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_LNAME = "lname";
@@ -55,15 +57,6 @@ public class DBAdapter extends SQLiteOpenHelper {
         db = getWritableDatabase();
         return this;
     }
-   // public Cursor getAllRows() {
-   //     String where = null;
-   //     Cursor c = db.query(true, DATABASE_NAME, ALL_COLUMNS, where, null, null, null, null, null);
-   //     if (c != null)
-   //     {
-   //         c.moveToFirst();
-   //     }
-   //     return c;
-   // }
 
     public long insertReservation(String lastNameValue, String firstNameValue, String arrivalValue, String  departureValue, String roomValue, String emailValue, String phoneValue, String staddressValue)
     {
@@ -95,5 +88,36 @@ public class DBAdapter extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+
+    public Cursor selectQuery(String query) {
+        Cursor c1 = null;
+        try {
+
+            if (db.isOpen()) {
+                db.close();
+
+            }
+            db = getWritableDatabase();
+            c1 = db.rawQuery(query, null);
+
+        } catch (Exception e) {
+
+            System.out.println("DATABASE ERROR " + e);
+
+        }
+        return c1;
+
+    }
+
+    public Cursor readData() {
+        String[] allColumns = new String[] { DBAdapter.COLUMN_LNAME,
+                DBAdapter.COLUMN_DATE };
+        Cursor c = db.query(DBAdapter.TABLE_RESERVATIONS, allColumns, null,
+                null, null, null, null);
+        if (c != null) {
+            c.moveToFirst();
+        }
+        return c;
+    }
 
 }
